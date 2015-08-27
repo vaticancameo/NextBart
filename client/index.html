@@ -1,0 +1,19 @@
+<head>
+  <title>NextBart</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+</head>
+
+<body>
+
+  {{> map}}
+</body>
+
+<template name="map">
+  <div class="map-container">
+    {{#unless geolocationError}}
+      {{> googleMap name="map" options=mapOptions}}
+    {{else}}
+      Geolocation failed: {{geolocationError}}
+    {{/unless}}
+  </div>
+</template>
