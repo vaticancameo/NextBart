@@ -1,5 +1,4 @@
 
-
 Meteor.startup(function() {
   GoogleMaps.load();
   detectBrowser();

@@ -1,4 +1,4 @@
-var MAP_ZOOM = 17;
+var MAP_ZOOM = 15;
 
 Template.map.helpers({
   geolocationError: function() {
