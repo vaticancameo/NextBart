@@ -1,21 +1,24 @@
 <head>
   <title>NextBart</title>
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
 </head>
 
 <body>
-
   {{> map}}
 </body>
 
 <template name="map">
-  <div class="map-container">
-    {{#unless geolocationError}}
-      {{> googleMap name="map" options=mapOptions}}
-    {{else}}
-      Geolocation failed: {{geolocationError}}
-    {{/unless}}
-  </div>
+  <form id="search">
+    <input type="text" form="search" name="address"><br>
+    <button type="submit" form="search">Search</button>
+  </form>
+
+  {{#unless geolocationError}}
+    <div class="map-container" id="map"></div>
+  {{else}}
+    Geolocation failed: {{geolocationError}}
+  {{/unless}}
+
 </template>

@@ -1,6 +1,8 @@
 
 Meteor.startup(function() {
-  GoogleMaps.load();
+  GoogleMaps.load({
+    libraries: 'places'
+  });
   detectBrowser();
 });
 

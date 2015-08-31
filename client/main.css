@@ -69,3 +69,8 @@ table {
    left: 0;
 
 }
+
+.search {
+  padding: 0;
+  border: 0;
+}
