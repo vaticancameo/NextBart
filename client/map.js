@@ -8,7 +8,13 @@ Template.map.helpers({
 });
 
 Template.map.onRendered(function() {
-
+  //fix mobile tap issue with fastclick 
+  $(document).on({
+    'DOMNodeInserted': function() {
+      $('.pac-item, .pac-item span', this).addClass('needsclick');
+    }
+  }, '.pac-container');
+  //end of fix
   this.autorun(function() {
     var latLng = Geolocation.latLng();
     Session.set('loc', latLng);

@@ -8,8 +8,8 @@ meteor-platform
 dburles:google-maps
 mdg:geolocation
 twbs:bootstrap
-fastclick
 jeremy:geocomplete
 peerlibrary:xml2js
 http
 autopublish
+fastclick
