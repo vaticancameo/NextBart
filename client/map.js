@@ -10,11 +10,11 @@ Template.map.helpers({
 Template.map.onRendered(function() {
 
   this.autorun(function() {
-    console.log('autorun');
     var latLng = Geolocation.latLng();
+    Session.set('loc', latLng);
     console.log(latLng);
     if(GoogleMaps.loaded() && latLng) {
-      //inserts autocomplete form
+
       $("input").geocomplete({
         map: $("#map"),
         location: [latLng.lat, latLng.lng],
