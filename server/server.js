@@ -10,7 +10,17 @@ function getStations() {
       var stations = results.root.stations[0].station;
       stations = JSON.parse('['+JSON.stringify(stations).replace(/[\[\]]/g,'')+']');
       stations.forEach(function(station) {
-        Stations.upsert({name: station.name}, station);
+        Stations.upsert({name: station.name}, {
+          "name" : station.name,
+          "abbr" : station.abbr,
+          "gtfs_latitude" : parseFloat(station.gtfs_latitude),
+          "gtfs_longitude" : parseFloat(station.gtfs_longitude),
+          "address" : station.address,
+          "city" : station.city,
+          "county" : station.county,
+          "state" : station.state,
+          "zipcode" : station.zipcode
+        });
       })
     });
   })
