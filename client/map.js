@@ -31,6 +31,9 @@ Template.map.onRendered(function() {
         location: [latLng.lat, latLng.lng],
         mapOptions: {
           zoom: 15
+        },
+        markerOptions: {
+          icon: './circle.svg'
         }
       })
 
@@ -48,7 +51,7 @@ Template.map.onRendered(function() {
           position: new google.maps.LatLng(stop.lat, stop.lon),
           map: map,
           title: stop.title,
-          icon: './marker.png'
+          icon: './vehicle29.svg'
           // animation: google.maps.Animation.DROP,
         });
       })
