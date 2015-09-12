@@ -33,14 +33,27 @@ Template.map.onRendered(function() {
           zoom: 15
         }
       })
+
       //.bind("geocode:click", function(event, result){
       //   var map = $("input").geocomplete("map");
       //   console.log(result.G, result.K);
       //   // center = new google.maps.LatLng(result.G, result.K);
       //   // map.setCenter(center);
       // });
+      var map = $("input").geocomplete('map');
+      var stops = closestStops(latLng.lat, latLng.lng);
+
+      stops.forEach(function(stop) {
+        new google.maps.Marker({
+          position: new google.maps.LatLng(stop.lat, stop.lon),
+          map: map,
+          title: stop.title,
+          icon: './marker.png'
+          // animation: google.maps.Animation.DROP,
+        });
+      })
       var station = closestStation(latLng.lat, latLng.lng);
-      bartTimes(station.abbr);
+      //bartTimes(station.abbr);
     }
 
   });

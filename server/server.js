@@ -1,7 +1,7 @@
 var BART = 'http://api.bart.gov/api/stn.aspx?key=MW9S-E7SL-26DU-VV8V';
 var BUS = 'http://services.my511.org/Transit2.0/ ';
 var TOKEN = 'b1e2b68f-ce35-4448-9bab-6639e577d192';
-var count = 0;
+
 var getStops = function (agency, tag) {
   HTTP.get('http://webservices.nextbus.com/service/publicXMLFeed?command=routeConfig&a='+agency+'&r='+tag, function (err, res) {
     if (err) {
@@ -29,7 +29,7 @@ var getStops = function (agency, tag) {
 };
 
 var getRoutes = function(agency) {
-  if (Stops.find().count()) {
+  if (Stops.find().count() > 8000) {
     console.log('stops already stored in db');
     return;
   }
@@ -48,7 +48,7 @@ var getRoutes = function(agency) {
 };
 
 var getStations = function() {
-  if(Stations.find().count()) {
+  if(Stations.find().count() > 44) {
     console.log('stations already stored in db');
     return;
   }
@@ -74,6 +74,7 @@ var getStations = function() {
 }
 
 Meteor.startup(function() {
+  var count = 0;
   getStations();
   getRoutes('sf-muni');
   getRoutes('actransit')

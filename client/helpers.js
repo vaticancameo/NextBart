@@ -39,12 +39,23 @@ closestStation = function(lat, lng) {
   }
 };
 
+closestStops = function(lat, lng) {
+  var stops = [];
+  Stops.find({
+    lat: {$gte: lat - 0.005, $lte: lat + 0.005 },
+    lon: {$gte: lng - 0.005 , $lte: lng + 0.005}
+  })
+  .forEach(function(s) {
+    stops.push(s);
+  });
+  return stops;
+};
+
 bartTimes = function(abbr) {
   HTTP.get(BART + abbr, function(err, res) {
     if (window.DOMParser) {
       parser=new DOMParser();
       xmlDoc=parser.parseFromString(res.content,"text/xml");
-      console.log(xmlDoc);
     }
     else { // Internet Explorer
       xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
